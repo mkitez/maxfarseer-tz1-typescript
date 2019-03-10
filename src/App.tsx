@@ -1,14 +1,14 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import PrivateRoute from './containers/PrivateRoute'
-import LoginContainer from './containers/LoginContainer'
-import LinkBtn from './components/LinkBtn'
-import Home from './components/Home'
-import ProfileContainer from './containers/ProfileContainer'
-import NewsContainer from './containers/NewsContainer'
-import NotFound from './components/NotFound'
-import './App.css'
+import * as React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import CssBaseline from 'material-ui/CssBaseline'
+import Home from './components/Home'
+import LinkBtn from './components/LinkBtn'
+import NotFound from './components/NotFound'
+import LoginContainer from './containers/LoginContainer'
+import NewsContainer from './containers/NewsContainer'
+import PrivateRoute from './containers/PrivateRoute'
+import ProfileContainer from './containers/ProfileContainer'
+import './App.css'
 
 const App = () => (
   <CssBaseline>
@@ -26,7 +26,7 @@ const App = () => (
       <hr />
       <div className="content">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact={true} path="/" component={Home} />
           <Route path="/news" component={NewsContainer} />
           <Route path="/login" component={LoginContainer} />
           <PrivateRoute path="/profile" component={ProfileContainer} />

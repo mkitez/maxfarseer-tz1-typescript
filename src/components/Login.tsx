@@ -1,15 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
+import { RouteProps } from 'react-router'
 import { Redirect } from 'react-router-dom'
+import { IUserParams } from '../actions/SessionActions'
 
-class Login extends React.Component {
-  state = {
+interface IProps extends RouteProps {
+  errorMsg: string
+  logIn(credentials: IUserParams, callback: () => void): void
+}
+
+class Login extends React.Component<IProps> {
+  public state = {
     redirectToPreviousRoute: false,
     username: '',
     password: '',
   }
 
-  handleSubmit = e => {
+  public handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { username, password } = this.state
 
@@ -24,9 +30,13 @@ class Login extends React.Component {
     )
   }
 
-  handleChange = e => {
+  public handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value
     const fieldName = e.currentTarget.dataset.fieldName
+
+    if (typeof fieldName === 'undefined') {
+      return
+    }
 
     this.setState(prev => ({
       ...prev,
@@ -34,9 +44,9 @@ class Login extends React.Component {
     }))
   }
 
-  render() {
+  public render() {
     const { location, errorMsg } = this.props
-    const { from } = location.state || { from: { pathname: '/' } }
+    const { from } = (location && location.state) || { from: { pathname: '/' } }
     const { username, password, redirectToPreviousRoute } = this.state
 
     if (redirectToPreviousRoute) {
@@ -66,11 +76,6 @@ class Login extends React.Component {
       </div>
     )
   }
-}
-
-Login.propTypes = {
-  logIn: PropTypes.func.isRequired,
-  errorMsg: PropTypes.string,
 }
 
 export default Login

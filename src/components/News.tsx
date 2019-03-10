@@ -1,16 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
+import { IProps } from '../containers/NewsContainer'
 
-const News = ({ data }) => {
+const News = ({ data }: IProps) => {
   return (
     <div className={'news-list'}>
       {data.length ? <p>"отрисовка новостей"</p> : <p>Новостей нет</p>}
     </div>
   )
-}
-
-News.proptypes = {
-  data: PropTypes.array.isRequired,
 }
 
 export default News

@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 
-const NotFound = ({ data }) => {
+const NotFound = () => {
   return (
-    <React.Fragment>
+    <>
       <h2>Страница не найдена</h2>
       <p>Попробуйте... (ссылки)</p>
-    </React.Fragment>
+    </>
   )
 }
 

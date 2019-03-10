@@ -1,9 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import Button from 'material-ui/Button'
 import { Link } from 'react-router-dom'
 
-const LinkBtn = ({ to, label }) => {
+interface IProps {
+  to: string
+  label: string
+}
+
+const LinkBtn = ({ to, label }: IProps) => {
   return (
     <Link to={to}>
       <Button variant="raised" color="primary">
@@ -11,11 +15,6 @@ const LinkBtn = ({ to, label }) => {
       </Button>
     </Link>
   )
-}
-
-LinkBtn.propTypes = {
-  to: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
 }
 
 export default LinkBtn

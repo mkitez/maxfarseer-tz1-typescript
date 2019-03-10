@@ -1,11 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 
 const Home = () => {
   return (
-    <React.Fragment>
+    <>
       <h2>Домашняя страница</h2>
       <p>Раздел в разработке</p>
-    </React.Fragment>
+    </>
   )
 }
 
